@@ -14,10 +14,10 @@ app.use(helmet());
 app.use(morgan('dev'));
 const post = require('../routes/post')
 const user = require('../routes/user')
-const comment = require('../routes/comments')
+    //const comment = require('../routes/comments')
 app.use('/posts', post);
 app.use('/user', user);
-app.use('/comment', comment);
+//app.use('/comment', comment);
 
 
 //catch 404 Errors and forward them to error handeler
