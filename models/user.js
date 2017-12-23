@@ -60,6 +60,7 @@ UserSchema.pre('save', async function(next) {
 //To chekc is the given pass is correct or not
 UserSchema.methods.isValidPassword = async function(newPass) {
     try {
+        var result = await bcrypt.compare(newPass, this.local.password)
         return await bcrypt.compare(newPass, this.local.password)
     } catch (error) {
         throw new Error(error);

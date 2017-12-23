@@ -7,6 +7,7 @@ require('../server/auth/passport')
 const passportSignJWT = passport.authenticate('jwt', { session: false });
 
 router.route('/:postId')
+    .get(validateParam(schemas.idSchema, 'postId'), ComntControllers.GetAllPostComntById)
     .post([validateParam(schemas.idSchema, 'postId'),
             validateBody(schemas.commentsSchema)
         ],

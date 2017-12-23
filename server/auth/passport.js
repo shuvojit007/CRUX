@@ -34,7 +34,6 @@ passport.use(new LocalStrategy({
         if (!isMatch) {
             return done(null, false)
         }
-        console.log(isMatch)
         done(null, user)
     } catch (error) {
         done(error, false);

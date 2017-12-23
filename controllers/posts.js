@@ -15,11 +15,11 @@ module.exports = {
         await user.save();
 
         //we are done
-        res.status(200).json(post);
+        res.status(200).json({ sucess: true });
     },
     //Get All Post
     GetAllPost: async(req, res) => {
-        const AllPost = await Post.find({});
+        const AllPost = await Post.find({}).populate('user');
         res.status(200).json(AllPost);
     },
 
@@ -32,7 +32,7 @@ module.exports = {
     //Get post by post Id
     GetPostById: async(req, res) => {
         const post = await Post
-            .findById(req.value.params.postId);
+            .findById(req.value.params.postId).populate("user");
         res.status(200).json(post);
     },
 
