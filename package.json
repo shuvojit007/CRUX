@@ -1,14 +1,22 @@
 {
     "name": "crux",
     "version": "1.0.0",
-    "description": "Simple rest api project for crux",
+    "description": "simple rest api project for crux",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon server/app.js",
+        "start": "node server/app.js",
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/shuvojit007/CRUX.git"
     },
     "author": "Shuvojit007",
     "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/shuvojit007/CRUX/issues"
+    },
+    "homepage": "https://github.com/shuvojit007/CRUX#readme",
     "dependencies": {
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.2",
@@ -19,7 +27,7 @@
         "jsonwebtoken": "^8.1.0",
         "mongoose": "^4.13.7",
         "morgan": "^1.9.0",
-        "nodemon": "^1.14.1",
+        "nodemon": "^1.14.3",
         "passport": "^0.4.0",
         "passport-jwt": "^3.0.1",
         "passport-local": "^1.0.0"

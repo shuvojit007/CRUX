@@ -10,9 +10,11 @@ const CommentsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'post'
     },
-    person: {
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'user'
     },
     date: { type: Date, default: Date.now }
 });
+
+module.exports = mongoose.model('comments', CommentsSchema);

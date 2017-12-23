@@ -13,14 +13,17 @@ const passportSignJWT = passport.authenticate('jwt', { session: false });
 router.route('/')
     .get(PostControllers.GetAllPost)
     .post(validateBody(schemas.postSchema), passportSignJWT, PostControllers.AddPost);
+
+router.route('/userpost')
+    .get(passportSignJWT, PostControllers.GetAllPostBySpecificUser)
+
 router.route('/:postId')
-    .get(validateParam(schemas.idSchema, 'postId'),
-        PostControllers.GetPostById)
-    .put([validateParam(schemas.idSchema, 'postId'),
-            validateBody(schemas.updateSchema)
-        ],
+    .get(validateParam(schemas.idSchema, 'postId'), PostControllers.GetPostById)
+    .put([validateParam(schemas.idSchema, 'postId'), validateBody(schemas.updateSchema)],
+        passportSignJWT,
         PostControllers.UpdatePost)
     .delete(validateParam(schemas.idSchema, 'postId'),
+        passportSignJWT,
         PostControllers.DeletePostById);
 
 module.exports = router;

@@ -66,6 +66,9 @@ module.exports = {
             password: Joi.string().required(),
             firstName: Joi.string().required(),
             lastName: Joi.string().required()
+        }),
+        commentsSchema: Joi.object().keys({
+            comment: Joi.string().required()
         })
 
     }
