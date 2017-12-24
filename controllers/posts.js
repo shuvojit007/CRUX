@@ -37,7 +37,7 @@ module.exports = {
         res.status(200).json(post);
     },
 
-
+    //Update Post
     UpdatePost: async(req, res) => {
         const post = await Post
             .findByIdAndUpdate(req.value.params.postId,
@@ -45,7 +45,7 @@ module.exports = {
         res.status(200).json({ sucess: true });
     },
 
-
+    //Delete post
     DeletePostById: async(req, res) => {
         const post = await Post.findById(req.value.params.postId);
         if (!post) {

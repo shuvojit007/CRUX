@@ -17,12 +17,14 @@ module.exports = {
 
         post.comments.push(comment)
         await post.save();
+        user.comments.push(comment)
+        await user.save();
 
         res.status(200).json({ sucess: true })
     },
 
     GetAllPostComntById: async(req, res) => {
-        const comment = await Comments.find({ post: req.value.params.postId });
+        const comment = await Comments.find({ post: req.value.params.postId }).populate(["user", "post"]);
         res.status(200).json(comment)
     }
 }

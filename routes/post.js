@@ -11,10 +11,13 @@ require('../server/auth/passport')
 const passportSignJWT = passport.authenticate('jwt', { session: false });
 
 router.route('/')
+    //get all post
     .get(PostControllers.GetAllPost)
+    //add new Post
     .post(validateBody(schemas.postSchema), passportSignJWT, PostControllers.AddPost);
 
 router.route('/userpost')
+    //get the specific user post
     .get(passportSignJWT, PostControllers.GetAllPostBySpecificUser)
 
 router.route('/:postId')
