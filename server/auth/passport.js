@@ -26,14 +26,15 @@ passport.use(new LocalStrategy({
     usernameField: 'email'
 }, async(email, password, done) => {
     try {
+        console.log(email)
         const user = await User.findOne({ "local.email": email });
+        console.log(user)
         if (!user) {
+            console.log('not found')
             return done(null, false)
         }
-        const isMatch = await user.isValidPassword(password);
-        if (!isMatch) {
-            return done(null, false)
-        }
+        const isMatch = user.isValidPassword(password);
+        if (!isMatch) { return done(null, false) }
         done(null, user)
     } catch (error) {
         done(error, false);
