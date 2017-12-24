@@ -37,7 +37,11 @@ module.exports = {
     SignIn: async(req, res) => {
         const token = signToken(req.user);
         res.status(200).json({ token });
+    },
+    googleOAuth: async(req, res, next) => {
+        //Generate Token 
+        // console.log('got here');
+        const token = signToken(req.user);
+        res.status(200).json({ token });
     }
-
-
 }
