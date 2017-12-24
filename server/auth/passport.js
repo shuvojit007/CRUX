@@ -50,10 +50,6 @@ passport.use('googleToken',
         clientSecret: config.oauth.google.clientSecret
     }, async(accessToken, refreshToken, profile, done) => {
         try {
-
-            //console.log(profile.image[0].url);
-            // console.log(profile.name.familyName)
-            // console.log(profile.name.givenName)
             //Should have full user profile here 
             const existingUser = await User
                 .findOne({ "google.id": profile.id })
