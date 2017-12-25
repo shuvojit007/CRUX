@@ -42,5 +42,5 @@ app.use((err, req, res, next) => {
 
 
 //start  the server 
-const port = process.env.port || 3000;
+var port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Magic is happeing on port ${port}`))
