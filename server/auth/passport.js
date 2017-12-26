@@ -25,17 +25,19 @@ passport.use("jwt", new JWTStrategy({
     }
 }));
 
-passport.use(new LocalStrategy({
+passport.use("local", new LocalStrategy({
     usernameField: 'email'
 }, async(email, password, done) => {
     try {
         const user = await User.findOne({ "local.email": email });
         if (!user) {
-            console.log('not found')
             return done(null, false)
         }
-        const isMatch = user.isValidPassword(password);
-        if (!isMatch) { return done(null, false) }
+        const isMatch = await user.isValidPassword(password);
+        if (!isMatch) {
+            console.log('Not Match')
+            return done(null, false)
+        }
         done(null, user)
     } catch (error) {
         done(error, false);
