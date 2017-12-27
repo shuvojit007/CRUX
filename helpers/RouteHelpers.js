@@ -65,7 +65,8 @@ module.exports = {
             email: Joi.string().email().required(),
             password: Joi.string().required(),
             firstName: Joi.string().required(),
-            lastName: Joi.string().required()
+            lastName: Joi.string().required(),
+            phnNumber: Joi.string().required()
         }),
         commentsSchema: Joi.object().keys({
             comment: Joi.string().required()

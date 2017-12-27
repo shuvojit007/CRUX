@@ -6,6 +6,7 @@ const passport = require('passport');
 require('../server/auth/passport');
 const passportSignIn = passport.authenticate('local', { session: false });
 const oAuthGoogle = passport.authenticate("googleToken", { session: false });
+const passportSignJWT = passport.authenticate('jwt', { session: false });
 
 router.route('/signup')
     .post(validateBody(schemas.authSignUpSchema),
@@ -16,6 +17,9 @@ router.route('/signin')
         passportSignIn,
         UserController.SignIn
     );
+
+router.route('/user')
+    .get(passportSignJWT, UserController.User);
 
 router.route('/oauth/google')
     .post(oAuthGoogle, UserController.googleOAuth);

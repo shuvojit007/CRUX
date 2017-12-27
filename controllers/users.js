@@ -14,7 +14,7 @@ signToken = (user) => {
 
 module.exports = {
     SignUp: async(req, res) => {
-        const { email, password, firstName, lastName } = req.value.body;
+        const { email, password, firstName, lastName, phnNumber } = req.value.body;
         const foundUser = await User.findOne({ "local.email": email })
         if (foundUser) {
             return res.status(409).json({ error: "Email is already in user" })
@@ -26,7 +26,8 @@ module.exports = {
                 password
             },
             firstName,
-            lastName
+            lastName,
+            phnNumber
         })
 
         const user = await newUser.save();
@@ -38,10 +39,15 @@ module.exports = {
         const token = signToken(req.user);
         res.status(200).json({ token });
     },
-    googleOAuth: async(req, res, next) => {
+    googleOAuth: async(req, res) => {
         //Generate Token 
         // console.log('got here');
         const token = signToken(req.user);
         res.status(200).json({ token });
+    },
+    User: async(req, res) => {
+        const user = await User.findById(req.user._id)
+        console.log(user)
+        res.status(200).json(user);
     }
 }
