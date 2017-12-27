@@ -44,7 +44,6 @@ module.exports = {
         postSchema: Joi.object().keys({
             title: Joi.string().required(),
             description: Joi.string().required(),
-            user: Joi.string().regex(/^[0-9a-fA-F]{24}$/),
             image: Joi.array()
 
         }),

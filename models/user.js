@@ -44,23 +44,30 @@ const UserSchema = new Schema({
 
 //arrow funciton doesn't support this keyword for this here 
 //we called  function in a old Fashion way
-UserSchema.pre('save', async function(next) {
-    try {
+// UserSchema.pre('save', async function(next) {
+//     try {
 
-        //if we use OAuth then we dont need to 
-        //hash the password
-        if (this.method !== 'local') {
-            next();
-        }
-        //Generate a Salt 
-        const salt = await bcrypt.genSalt(10)
-        const passHash = await bcrypt.hash(this.local.password, salt)
-        this.local.password = passHash;
-        next()
-    } catch (error) {
-        next(error);
-    }
-});
+//         //if we use OAuth then we dont need to 
+//         //hash the password
+//         // if (this.method !== 'local') {
+//         //     next();
+//         // }
+//         // if (this.update == !true) {
+//         //     this.update = true;
+//         //     const salt = await bcrypt.genSalt(10)
+//         //     const passHash = await bcrypt.hash(this.local.password, salt)
+//         //     this.local.password = passHash;
+//         //     next()
+//         // } else {
+//         //     next()
+//         // }
+//         //Generate a Salt 
+//         next()
+
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
 //To chekc is the given pass is correct or not
 UserSchema.methods.isValidPassword = async function(newPass) {

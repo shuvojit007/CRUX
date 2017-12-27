@@ -13,7 +13,6 @@ module.exports = {
         //add post to user model
         user.post.push(post)
         await user.save();
-
         //we are done
         res.status(200).json({ sucess: true });
     },

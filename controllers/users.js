@@ -1,5 +1,6 @@
 const JWT = require('jsonwebtoken');
 const User = require('../models/user');
+const bcrypt = require('bcryptjs');
 const { JWT_SECRET } = require('../config/config');
 
 //this method generate token
@@ -19,11 +20,14 @@ module.exports = {
         if (foundUser) {
             return res.status(409).json({ error: "Email is already in user" })
         }
+        const salt = await bcrypt.genSalt(10)
+        const passHash = await bcrypt.hash(password, salt)
+
         const newUser = new User({
             method: 'local',
             local: {
                 email,
-                password
+                password: passHash
             },
             firstName,
             lastName,
