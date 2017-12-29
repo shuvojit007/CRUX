@@ -44,14 +44,14 @@ module.exports = {
         postSchema: Joi.object().keys({
             title: Joi.string().required(),
             description: Joi.string().required(),
-            image: Joi.array()
+            image: Joi.string()
 
         }),
         updateSchema: Joi.object().keys({
             title: Joi.string(),
             description: Joi.string(),
             user: Joi.string().regex(/^[0-9a-fA-F]{24}$/),
-            image: Joi.array()
+            image: Joi.string()
         }),
         idSchema: Joi.object().keys({
             param: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
