@@ -53,5 +53,9 @@ module.exports = {
         const user = await User.findById(req.user._id)
         console.log(user)
         res.status(200).json(user);
+    },
+    UpdatePic: async(req, res) => {
+        const user = await User.findByIdAndUpdate(req.user._id, req.value.body);
+        res.status(200).json({ sucess: true });
     }
 }

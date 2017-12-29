@@ -69,6 +69,9 @@ module.exports = {
         }),
         commentsSchema: Joi.object().keys({
             comment: Joi.string().required()
+        }),
+        updateUserPicSchema: Joi.object().keys({
+            image: Joi.string().required()
         })
 
     }

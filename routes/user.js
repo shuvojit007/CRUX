@@ -19,7 +19,10 @@ router.route('/signin')
     );
 
 router.route('/user')
-    .get(passportSignJWT, UserController.User);
+    .get(passportSignJWT, UserController.User)
+    .put(validateBody(schemas.updateUserPicSchema),
+        passportSignJWT,
+        UserController.UpdatePic);
 
 router.route('/oauth/google')
     .post(oAuthGoogle, UserController.googleOAuth);
