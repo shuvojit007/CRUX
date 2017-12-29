@@ -26,7 +26,7 @@ module.exports = {
     GetAllPostBySpecificUser: async(req, res) => {
         const post = await Post.find({ user: req.user._id }).sort({ date: -1 });
         console.log(post)
-        if (post == null) {
+        if (post.count() == 0) {
             res.status(400).json(post)
         }
         res.status(200).json(post);
