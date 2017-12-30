@@ -24,7 +24,7 @@ module.exports = {
     },
 
     GetAllPostComntById: async(req, res) => {
-        const comment = await Comments.find({ post: req.value.params.postId }).populate(["user", "post"]);
+        const comment = await Comments.find({ post: req.value.params.postId }).populate("user");
         res.status(200).json(comment)
     }
 }

@@ -22,7 +22,9 @@ router.route('/userpost')
 
 router.route('/:postId')
     .get(validateParam(schemas.idSchema, 'postId'), PostControllers.GetPostById)
-    .put([validateParam(schemas.idSchema, 'postId'), validateBody(schemas.updateSchema)],
+    .put([validateParam(schemas.idSchema, 'postId'),
+            validateBody(schemas.updateSchema)
+        ],
         passportSignJWT,
         PostControllers.UpdatePost)
     .delete(validateParam(schemas.idSchema, 'postId'),

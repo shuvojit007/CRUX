@@ -53,7 +53,7 @@ module.exports = {
         user.post.pull(post)
         await user.save()
         await post.remove();
-        res.status(200).json({ seucess: true });
+        res.status(200).json({ sucess: true });
     }
 
 }
